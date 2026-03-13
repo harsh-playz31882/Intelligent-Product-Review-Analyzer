@@ -1,5 +1,5 @@
 
-#Feature Extraction
+#Step 3: Feature Extraction
 
 
 import pandas as pd
@@ -13,7 +13,7 @@ from collections import Counter
 import re
 
 class FeatureExtractor:
-    #Class for extracting various types of features from text
+    """Class for extracting various types of features from text"""
     
     def __init__(self):
         self.tfidf_vectorizer = None
@@ -22,7 +22,7 @@ class FeatureExtractor:
         
     def extract_tfidf_features(self, texts, max_features=5000, ngram_range=(1, 2)):
        
-        print(" Extracting TF-IDF Features")
+        print("Extracting TF-IDF Features ")
         print(f"Max features: {max_features}, N-gram range: {ngram_range}")
         
         # Initialize TF-IDF Vectorizer
@@ -48,14 +48,11 @@ class FeatureExtractor:
         return tfidf_features
     
     def train_word2vec(self, texts, vector_size=100, window=5, min_count=2, workers=4):
-        """
-        Train Word2Vec model on the texts
-        Returns trained Word2Vec model
-        """
-        print("Training Word2Vec Model")
+        
+        print("Training Word2Vec Model ")
         print(f"Vector size: {vector_size}, Window: {window}, Min count: {min_count}")
         
-        
+        # Tokenize texts for Word2Vec
         tokenized_texts = [text.split() for text in texts]
         
         # Train Word2Vec model
@@ -81,7 +78,6 @@ class FeatureExtractor:
         return self.word2vec_model
     
     def get_document_vector(self, text, use_tfidf_weighting=False):
-       
         if not self.word2vec_model:
             raise ValueError("Word2Vec model not trained. Call train_word2vec first.")
         
@@ -102,10 +98,6 @@ class FeatureExtractor:
         return doc_vector
     
     def extract_word2vec_features(self, texts):
-        """
-        Extract Word2Vec features for all texts
-        Returns dense matrix of document vectors
-        """
         print("=== Extracting Word2Vec Features ===")
         
         if not self.word2vec_model:
@@ -124,12 +116,9 @@ class FeatureExtractor:
         print(f"Word2Vec feature matrix shape: {word2vec_features.shape}")
         
         return word2vec_features
-
-
     
     def extract_text_statistics(self, texts):
-      
-        print(" Extracting Text Statistics ")
+        print("=== Extracting Text Statistics ===")
         
         features = []
         
@@ -176,8 +165,7 @@ class FeatureExtractor:
         return stats_df
     
     def encode_labels(self, labels):
-       
-        print("Encoding Labels")
+        print("=== Encoding Labels ===")
         
         self.label_encoder = LabelEncoder()
         encoded_labels = self.label_encoder.fit_transform(labels)
@@ -188,8 +176,7 @@ class FeatureExtractor:
         
         return encoded_labels
     
-    def save_features(self, features, filename, path='models/'):
-        """Save extracted features to disk"""
+    def save_features(self, features, filename, path='../models/'):
         os.makedirs(path, exist_ok=True)
         filepath = os.path.join(path, filename)
         
@@ -198,8 +185,7 @@ class FeatureExtractor:
         
         print(f"Features saved to: {filepath}")
     
-    def save_models(self, path='models/'):
-        """Save trained models to disk"""
+    def save_models(self, path='../models/'):
         os.makedirs(path, exist_ok=True)
         
         if self.tfidf_vectorizer:
@@ -217,8 +203,7 @@ class FeatureExtractor:
             print("Label encoder saved")
 
 def extract_all_features(X_train, X_test, y_train, y_test, sample_size='10k'):
-   
-    print(f"Extracting All Features for {sample_size} Dataset")
+    print(f"Extracting All Features for {sample_size} Dataset ")
     
     # Initialize feature extractor
     extractor = FeatureExtractor()
@@ -245,7 +230,7 @@ def extract_all_features(X_train, X_test, y_train, y_test, sample_size='10k'):
     
     # Save all features and models
     print("\n" + "="*50)
-    print("=== Saving Features and Models ===")
+    print("Saving Features and Models")
     
     # Save features
     extractor.save_features(X_train_tfidf, f'X_train_tfidf_{sample_size}.pkl')
@@ -256,13 +241,13 @@ def extract_all_features(X_train, X_test, y_train, y_test, sample_size='10k'):
     extractor.save_features(y_test_encoded, f'y_test_{sample_size}.pkl')
     
     # Save text statistics as CSV
-    X_train_stats.to_csv(f'data/X_train_stats_{sample_size}.csv', index=False)
-    X_test_stats.to_csv(f'data/X_test_stats_{sample_size}.csv', index=False)
+    X_train_stats.to_csv(f'../data/X_train_stats_{sample_size}.csv', index=False)
+    X_test_stats.to_csv(f'../data/X_test_stats_{sample_size}.csv', index=False)
     
     # Save models
     extractor.save_models()
     
-    print("\n=== Feature Extraction Complete ===")
+    print("\n Feature Extraction Complete ")
     
     return {
         'tfidf': (X_train_tfidf, X_test_tfidf),
@@ -272,16 +257,13 @@ def extract_all_features(X_train, X_test, y_train, y_test, sample_size='10k'):
         'extractor': extractor
     }
 
-    
-
 def main():
-    """Main feature extraction pipeline"""
     print("Starting Feature Extraction...")
     
     # Load preprocessed data
     print("Loading preprocessed data...")
-    train_data = pd.read_csv('data/train_10k.csv')
-    test_data = pd.read_csv('data/test_10k.csv')
+    train_data = pd.read_csv('../data/train_10k.csv')
+    test_data = pd.read_csv('../data/test_10k.csv')
     
     X_train = train_data['Text']
     X_test = test_data['Text']
