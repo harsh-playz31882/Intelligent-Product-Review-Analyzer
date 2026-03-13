@@ -1,1 +1,3 @@
 # Intelligent-Product-Review-Analyzer
+
+It is a machine learning–based system designed to analyze customer reviews. The project aims to classify reviews as positive, negative, or neutral, or classify up to 5 classes. using Natural Language Processing (NLP) techniques. It also extracts important product aspects related to specific products and classidfies it to give its seperate ratings. Machine learning models will be trained on a dataset of product reviews after preprocessing and feature extraction. The final output will present insights through visualizations showing overall sentiment distribution and key product features that customers like or dislike.
