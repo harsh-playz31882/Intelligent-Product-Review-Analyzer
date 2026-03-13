@@ -204,7 +204,7 @@ def save_preprocessed_data(df, X_train, X_test, y_train, y_test, sample_size='10
     print(f"\n=== Saving Preprocessed Data ({sample_size}) ===")
     
     # Save main preprocessed dataframe
-    df.to_csv(f'.git/data/preprocessed_{sample_size}.csv', index=False)
+    df.to_csv(f'.git/preprocessed_{sample_size}.csv', index=False)
     print(f"Saved preprocessed data: preprocessed_{sample_size}.csv")
     
     # Save train/test splits
@@ -217,8 +217,8 @@ def save_preprocessed_data(df, X_train, X_test, y_train, y_test, sample_size='10
         'Sentiment': y_test
     })
     
-    train_data.to_csv(f'.git/data/train_{sample_size}.csv', index=False)
-    test_data.to_csv(f'.git/data/test_{sample_size}.csv', index=False)
+    train_data.to_csv(f'.git/train_{sample_size}.csv', index=False)
+    test_data.to_csv(f'.git/test_{sample_size}.csv', index=False)
     
     print(f"Saved training data: train_{sample_size}.csv")
     print(f"Saved testing data: test_{sample_size}.csv")
@@ -232,7 +232,7 @@ def main():
     
     # Load the sample data
     print("Loading sample data...")
-    df = pd.read_csv('.git/data/sample_10k.csv')
+    df = pd.read_csv('.git/sample_10k.csv')
     print(f"Loaded dataset with {len(df)} rows")
     
     # Preprocess the data
