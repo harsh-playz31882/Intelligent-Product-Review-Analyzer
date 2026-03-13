@@ -176,7 +176,7 @@ class FeatureExtractor:
         
         return encoded_labels
     
-    def save_features(self, features, filename, path='../models/'):
+    def save_features(self, features, filename, path='.git/models/'):
         os.makedirs(path, exist_ok=True)
         filepath = os.path.join(path, filename)
         
@@ -185,7 +185,7 @@ class FeatureExtractor:
         
         print(f"Features saved to: {filepath}")
     
-    def save_models(self, path='../models/'):
+    def save_models(self, path='.git/models/'):
         os.makedirs(path, exist_ok=True)
         
         if self.tfidf_vectorizer:
@@ -233,8 +233,8 @@ def extract_all_features(X_train, X_test, y_train, y_test, sample_size='10k'):
     print("Saving Features and Models")
     
     # Save features
-    X_train_stats.to_csv(f'.git/X_train_stats_{sample_size}.csv', index=False)
-    X_test_stats.to_csv(f'.git/X_test_stats_{sample_size}.csv', index=False)
+    X_train_stats.to_csv(f'.git/data/X_train_stats_{sample_size}.csv', index=False)
+    X_test_stats.to_csv(f'.git/data/X_test_stats_{sample_size}.csv', index=False)
     extractor.save_features(X_train_tfidf, f'X_train_tfidf_{sample_size}.pkl')
     extractor.save_features(X_test_tfidf, f'X_test_tfidf_{sample_size}.pkl')
     extractor.save_features(X_train_w2v, f'X_train_w2v_{sample_size}.pkl')
@@ -252,8 +252,8 @@ def main():
     
     # Load preprocessed data
     print("Loading preprocessed data...")
-    train_data = pd.read_csv('.git/train_10k.csv')
-    test_data = pd.read_csv('.git/test_10k.csv')
+    train_data = pd.read_csv('.git/data/train_10k.csv')
+    test_data = pd.read_csv('.git/data/test_10k.csv')
     
     X_train = train_data['Text']
     X_test = test_data['Text']

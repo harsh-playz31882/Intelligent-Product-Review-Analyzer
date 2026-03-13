@@ -40,12 +40,10 @@ Thumbs.db
 # Large dataset file - moved to .git folder
 Reviews.csv
 
-# Generated files and models - moved to .git folder
-models/*.pkl
-models/*.bin
-data/*.csv
-data/*.pkl
-results/*.png
+# Generated files and models - moved# Keep .git folder structure clean
+.git/data/
+.git/models/
+.git/results/*.png
 results/*.csv
 
 # Temporary files
