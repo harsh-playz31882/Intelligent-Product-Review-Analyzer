@@ -2,18 +2,18 @@
 
 A machine learning system designed to analyze customer reviews and classify sentiment using Natural Language Processing techniques.
 
-## 🎯 Project Overview
+## Project Overview
 
 This project analyzes Amazon product reviews to classify them as positive, negative, or neutral using multiple machine learning approaches. The system processes raw text data, extracts meaningful features, and trains models to predict sentiment.
 
-## 📊 Dataset
+##  Dataset
 
 - **Source:** Amazon Fine Food Reviews
 - **Size:** 568,454 reviews
 - **Features:** Text, Summary, Score (1-5 ratings)
 - **Balanced Sample:** 10,000 reviews (3,334 per sentiment class)
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -108,7 +108,7 @@ Intelligent-Product-Review-Analyzer/
 └── README.md                     # This file
 ```
 
-## 🔧 Technical Details
+## Technical Details
 
 ### Data Preprocessing
 - **Text Cleaning:** HTML tags, URLs, punctuation removal
