@@ -14,7 +14,6 @@ import string
 
 # Download necessary NLTK data (run once)
 def download_nltk_data():
-    """Download required NLTK packages"""
     try:
         nltk.data.find('tokenizers/punkt')
     except LookupError:
@@ -41,21 +40,13 @@ def download_nltk_data():
         nltk.download('averaged_perceptron_tagger')
 
 class TextPreprocessor:
-    """Class for handling text preprocessing operations"""
     
     def __init__(self):
         self.stop_words = set(stopwords.words('english'))
         self.lemmatizer = WordNetLemmatizer()
         
     def clean_text(self, text):
-        """
-        Clean text data by removing:
-        - HTML tags
-        - URLs
-        - Punctuation
-        - Numbers
-        - Extra whitespace
-        """
+        
         if pd.isna(text):
             return ""
         
@@ -83,7 +74,6 @@ class TextPreprocessor:
         return text
     
     def tokenize_and_remove_stopwords(self, text):
-        """Tokenize text and remove stopwords"""
         if not text:
             return []
         
@@ -106,10 +96,7 @@ class TextPreprocessor:
         return lemmatized
     
     def preprocess_text(self, text, join_tokens=True):
-        """
-        Complete preprocessing pipeline
-        Returns either joined string or list of tokens
-        """
+        
         # Clean text
         cleaned = self.clean_text(text)
         
@@ -125,11 +112,8 @@ class TextPreprocessor:
             return tokens
 
 def preprocess_dataset(df, text_column='Text', summary_column='Summary'):
-    """
-    Preprocess the entire dataset
-    Returns preprocessed dataframe with additional columns
-    """
-    print("=== Starting Data Preprocessing ===")
+   
+    print("Starting Data Preprocessing ")
     
     # Initialize preprocessor
     preprocessor = TextPreprocessor()
@@ -194,12 +178,7 @@ def analyze_preprocessed_data(df):
     return df
 
 def split_data(df, test_size=0.2, random_state=42):
-    """
-    Split data into training and testing sets
-    Returns X_train, X_test, y_train, y_test
-    """
-    print(f"\n=== Splitting Data (Test Size: {test_size}) ===")
-    
+   
     # Prepare features and target
     X = df['Combined_Text']
     y = df['Sentiment']
@@ -222,7 +201,6 @@ def split_data(df, test_size=0.2, random_state=42):
     return X_train, X_test, y_train, y_test
 
 def save_preprocessed_data(df, X_train, X_test, y_train, y_test, sample_size='10k'):
-    """Save preprocessed data for next steps"""
     print(f"\n=== Saving Preprocessed Data ({sample_size}) ===")
     
     # Save main preprocessed dataframe
@@ -246,7 +224,6 @@ def save_preprocessed_data(df, X_train, X_test, y_train, y_test, sample_size='10
     print(f"Saved testing data: test_{sample_size}.csv")
 
 def main():
-    """Main preprocessing pipeline"""
     print("Starting Data Preprocessing...")
     
     # Download NLTK data
