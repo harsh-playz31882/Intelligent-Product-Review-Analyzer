@@ -121,25 +121,10 @@ Intelligent-Product-Review-Analyzer/
 - **Word2Vec:** 100-dimensional vectors, skip-gram model
 - **Text Statistics:** Character count, word count, punctuation
 
-### Machine Learning Models
+### Machine Learning Model to Train
 - **Logistic Regression:** Fast baseline model
-- **Naive Bayes:** Probabilistic classifier
-- **Random Forest:** Ensemble method
-- **SVM:** Support vector machine
-- **Gradient Boosting:** Advanced ensemble
-- **Neural Network:** Multi-layer perceptron
 
-## 📈 Results
 
-### Performance Metrics (10k dataset)
-- **Logistic Regression:** ~85% accuracy
-- **Random Forest:** ~87% accuracy
-- **Naive Bayes:** ~80% accuracy
-
-### Key Findings
-- TF-IDF features perform best for sentiment analysis
-- Word2Vec captures semantic relationships
-- Balanced dataset crucial for fair evaluation
 
 ## 🛠️ Dependencies
 
