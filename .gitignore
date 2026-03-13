@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+# Large dataset file - moved to .git folder
+Reviews.csv
+
+# Generated files and models - moved to .git folder
+models/*.pkl
+models/*.bin
+data/*.csv
+data/*.pkl
+results/*.png
+results/*.csv
+
+# Temporary files
+tempCodeRunnerFile.py
+*.tmp
+
+# NLTK data
+nltk_data/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs
+*.log
