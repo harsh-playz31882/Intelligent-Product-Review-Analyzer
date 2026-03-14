@@ -15,9 +15,7 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.max_colwidth', 100)
 
 def load_and_explore_data():
-    print("=== Loading Dataset ===")
     df = pd.read_csv('Reviews.csv')
-    
     print(f"Dataset shape: {df.shape}")
     print(f"\nColumns: {list(df.columns)}")
     print(f"\nFirst few rows:")
@@ -26,17 +24,12 @@ def load_and_explore_data():
     return df
 
 def analyze_dataset_info(df):
-    """Check basic information about the dataset"""
-    print("\n=== Dataset Information ===")
     print("Dataset Info:")
     df.info()
-    
     print("\nMissing values:")
     print(df.isnull().sum())
 
 def analyze_score_distribution(df):
-    """Analyze and visualize the Score distribution"""
-    print("\n=== Score Distribution Analysis ===")
     print("Score Distribution:")
     print(df['Score'].value_counts().sort_index())
     
@@ -50,8 +43,7 @@ def analyze_score_distribution(df):
     plt.show()
 
 def convert_to_sentiment(df):
-    """Convert scores to sentiment classes"""
-    print("\n=== Converting Scores to Sentiment ===")
+    print("\n Converting Scores to Sentiment")
     
     # 1-2: Negative, 3: Neutral, 4-5: Positive
     def score_to_sentiment(score):
@@ -66,8 +58,8 @@ def convert_to_sentiment(df):
     
     print("Sentiment Distribution:")
     print(df['Sentiment'].value_counts())
-    
-    # Visualize sentiment distribution
+   
+
     plt.figure(figsize=(8, 6))
     df['Sentiment'].value_counts().plot(kind='bar')
     plt.title('Sentiment Distribution')
@@ -80,9 +72,6 @@ def convert_to_sentiment(df):
     return df
 
 def analyze_text_length(df):
-    """Analyze review text and summary length"""
-    print("\n=== Text Length Analysis ===")
-    
     df['Text_Length'] = df['Text'].str.len()
     df['Summary_Length'] = df['Summary'].str.len()
     
@@ -107,36 +96,30 @@ def analyze_text_length(df):
     plt.show()
 
 def sample_reviews_by_sentiment(df):
-    """Display sample reviews for each sentiment"""
-    print("\n=== Sample Reviews by Sentiment ===")
+    print("\n  Sample Reviews by Sentiment ")
     
     for sentiment in ['Positive', 'Neutral', 'Negative']:
-        print(f"\n=== {sentiment} Reviews ===")
+        print(f"\n   {sentiment} Reviews ")
         sample_reviews = df[df['Sentiment'] == sentiment]['Text'].head(3)
         for i, review in enumerate(sample_reviews, 1):
             print(f"\nReview {i}:")
             print(review[:200] + "..." if len(review) > 200 else review)
 
 def remove_duplicates(df):
-    """Remove duplicate reviews"""
-    print("\n=== Removing Duplicates ===")
-    
     duplicates = df.duplicated(subset=['Text', 'Score']).sum()
     print(f"Number of duplicate reviews: {duplicates}")
     
-    # Remove duplicates for cleaner dataset
+    
     df_clean = df.drop_duplicates(subset=['Text', 'Score'])
     print(f"Dataset size after removing duplicates: {len(df_clean)}")
     
     return df_clean
 
 def create_training_samples(df_clean):
-    """Create balanced samples for training cycles"""
-    print("\n=== Creating Training Samples ===")
+    print("\n  Creating Training Samples ")
     
-    # Save a sample of the data for initial training (10k entries)
-    # We'll create a balanced sample
-    sample_size_per_class = 3334  # Approximately 10k total
+    # sample of the data for initial training (10k Records)
+    sample_size_per_class = 3334 #approx.
     
     sampled_data = []
     for sentiment in ['Positive', 'Neutral', 'Negative']:
@@ -179,8 +162,7 @@ def main():
     
     sample_10k = create_training_samples(df_clean)
     
-    print("\n=== Data Exploration Complete ===")
-    print("Next step: Data preprocessing and text cleaning")
+    print("\n Data Exploration Complete ")
     
     return df_clean, sample_10k
 

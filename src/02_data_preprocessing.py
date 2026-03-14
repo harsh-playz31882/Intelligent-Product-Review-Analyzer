@@ -157,8 +157,7 @@ def preprocess_dataset(df, text_column='Text', summary_column='Summary'):
     return df
 
 def analyze_preprocessed_data(df):
-    """Analyze the preprocessed data"""
-    print("\n=== Preprocessed Data Analysis ===")
+    print("\n Preprocessed Data Analysis")
     
     # Text length statistics after preprocessing
     df['Processed_Text_Length'] = df['Combined_Text'].str.len()
@@ -166,7 +165,7 @@ def analyze_preprocessed_data(df):
     print("Processed text statistics:")
     print(df['Processed_Text_Length'].describe())
     
-    # Check for empty or very short texts
+    
     very_short = (df['Processed_Text_Length'] < 10).sum()
     print(f"\nNumber of very short texts (<10 chars): {very_short}")
     

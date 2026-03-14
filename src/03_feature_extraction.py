@@ -31,8 +31,8 @@ class FeatureExtractor:
             ngram_range=ngram_range,
             stop_words='english',
             lowercase=True,
-            min_df=2,  # Ignore terms that appear in less than 2 documents
-            max_df=0.95  # Ignore terms that appear in more than 95% of documents
+            min_df=2,  # Ignores the terms that appear in less than 2 documents
+            max_df=0.95  # Ignores the terms that appear in more than 95% of documents
         )
         
         # Fit and transform the texts
