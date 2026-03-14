@@ -2,18 +2,18 @@
 
 A machine learning system designed to analyze customer reviews and classify sentiment using Natural Language Processing techniques.
 
-## 🎯 Project Overview
+## Project Overview
 
 This project analyzes Amazon product reviews to classify them as positive, negative, or neutral using multiple machine learning approaches. The system processes raw text data, extracts meaningful features, and trains models to predict sentiment.
 
-## 📊 Dataset
+##  Dataset
 
 - **Source:** Amazon Fine Food Reviews
 - **Size:** 568,454 reviews
 - **Features:** Text, Summary, Score (1-5 ratings)
 - **Balanced Sample:** 10,000 reviews (3,334 per sentiment class)
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -108,7 +108,7 @@ Intelligent-Product-Review-Analyzer/
 └── README.md                     # This file
 ```
 
-## 🔧 Technical Details
+## Technical Details
 
 ### Data Preprocessing
 - **Text Cleaning:** HTML tags, URLs, punctuation removal
@@ -121,25 +121,10 @@ Intelligent-Product-Review-Analyzer/
 - **Word2Vec:** 100-dimensional vectors, skip-gram model
 - **Text Statistics:** Character count, word count, punctuation
 
-### Machine Learning Models
+### Machine Learning Model to Train
 - **Logistic Regression:** Fast baseline model
-- **Naive Bayes:** Probabilistic classifier
-- **Random Forest:** Ensemble method
-- **SVM:** Support vector machine
-- **Gradient Boosting:** Advanced ensemble
-- **Neural Network:** Multi-layer perceptron
 
-## 📈 Results
 
-### Performance Metrics (10k dataset)
-- **Logistic Regression:** ~85% accuracy
-- **Random Forest:** ~87% accuracy
-- **Naive Bayes:** ~80% accuracy
-
-### Key Findings
-- TF-IDF features perform best for sentiment analysis
-- Word2Vec captures semantic relationships
-- Balanced dataset crucial for fair evaluation
 
 ## 🛠️ Dependencies
 
