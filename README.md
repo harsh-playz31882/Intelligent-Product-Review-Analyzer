@@ -179,7 +179,7 @@ gensim==4.3.2
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Amazon Fine Food Reviews dataset
 - NLTK for natural language processing
